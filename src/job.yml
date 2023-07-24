@@ -6,10 +6,10 @@ command: >-
   --reg_rate ${{inputs.reg_rate}}
 inputs:
   training_data: 
-    type: uri_folder 
-    path: 'https://ai102l01lab.blob.core.windows.net/diabetes'
+    type: uri_folder
+    path: 'https://tempstorageaichallenge.blob.core.windows.net/diabetes'
   reg_rate: 0.01
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-compute: azureml:aml-cluster
+environment: azureml:basic-env-scikit@latest
+compute: azureml:ci1233456
 experiment_name: diabetes-skills-challenge
 description: Train a classification model on diabetes data using a registered dataset as input.
