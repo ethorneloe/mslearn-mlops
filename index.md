@@ -10,6 +10,7 @@ This repository contains hands-on challenges for end-to-end machine learning ope
 
 To complete these exercises, you’ll need a Microsoft Azure subscription. If your instructor has not provided you with one, you can sign up for a free trial at [https://azure.microsoft.com](https://azure.microsoft.com/).
 
+
 ## Challenges
 
 {% assign challenge = site.pages | where_exp:"page", "page.url contains '/documentation'" %}
