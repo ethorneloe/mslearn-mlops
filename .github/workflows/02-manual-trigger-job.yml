@@ -16,4 +16,4 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: Train
-      run: az ml job create --file \src\job.yml --workspace-name 'mlw-dp100-labs2' --resource-group 'rg-dp100-labs'
+      run: az ml job create --file ./src/job.yml --workspace-name 'mlw-dp100-labs2' --resource-group 'rg-dp100-labs'
