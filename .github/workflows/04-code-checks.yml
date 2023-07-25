@@ -34,4 +34,4 @@ jobs:
         flake8 ../src/model/
     - name: Run tests
       run: |
-        pytest test_train.py
+        pytest tests
