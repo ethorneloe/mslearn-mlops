@@ -5,8 +5,9 @@ on:
       - main
 
 jobs:
-  train:
+  test_train:
     runs-on: ubuntu-latest
+    environment: 'dev'
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
@@ -17,4 +18,20 @@ jobs:
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       - name: Train
-        run: az ml job create --file ./src/job.yml --workspace-name 'mlw-dp100-labs2' --resource-group 'rg-dp100-labs'
+        run: az ml job create --file ./src/testJob.yml --workspace-name 'mlw-dp100-labs2' --resource-group 'rg-dp100-labs' --stream
+
+  prod_train:
+    needs: test_train
+    runs-on: ubuntu-latest
+    environment: 'prod'
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Install az ml extension
+        run: az extension add -n ml -y
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+      - name: Train
+        run: az ml job create --file ./src/prodJob.yml --workspace-name 'mlw-dp100-labs2' --resource-group 'rg-dp100-labs' --stream
