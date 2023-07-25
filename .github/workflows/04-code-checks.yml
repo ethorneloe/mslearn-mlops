@@ -21,5 +21,8 @@ jobs:
       run: | 
         cd ./tests
         flake8 ../src/model/
+    - name: Run tests
+      run: |
+        pytest test_train.py
 
 
